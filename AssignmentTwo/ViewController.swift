@@ -14,11 +14,16 @@ class ViewController: UIViewController {
     let discount = 0.06
     let startYear = 1826
     let finishYear = 2019
+    
+    let collectedMoney = 2400.00
+    let grant = 700.0
+    let livingExpenses = 1000.0
+    let costIncrease = 0.03
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         stateOfAccount(basePrice: basePrice, discount: discount, startYear: startYear, finishYear: finishYear)
-        sumOfMoney()
+        sumOfMoney(grant: grant, livingExpenses: livingExpenses, costIncrease: costIncrease)
         monthsOfStudy()
         inverceNumber()
     }
@@ -38,10 +43,9 @@ class ViewController: UIViewController {
     }
     
     //Задача 2. Ежемесячная стипендия студента составляет 700 гривен, а расходы на проживание превышают ее и составляют 1000 грн. в месяц. Рост цен ежемесячно увеличивает расходы на 3%. Определить, какую нужно иметь сумму денег, чтобы прожить учебный год (10 месяцев), используя только эти деньги и стипендию.
-    let grant = 700.0
-    var livingExpenses = 1000.0
-    let costIncrease = 0.03
-    func sumOfMoney() {
+    
+    func sumOfMoney(grant: Double, livingExpenses: Double, costIncrease: Double) {
+        var livingExpenses = livingExpenses
         var sum = livingExpenses
         for _ in 2...10 {
             livingExpenses = livingExpenses + (livingExpenses * costIncrease)
@@ -52,23 +56,22 @@ class ViewController: UIViewController {
     }
     
     //Задача 3. У студента имеются накопления 2400 грн. Ежемесячная стипендия составляет 700 гривен, а расходы на проживание превышают ее и составляют 1000 грн. в месяц. Рост цен ежемесячно увеличивает расходы на 3%. Определить, сколько месяцев сможет прожить студент, используя только накопления и стипендию.
-    var collectedMoney = 2400.00
-    let scholarship = 700.0
-    var monthlyIncome = 0.0
-    var livingCost = 1000.0
-    var totalCost = 0.0
-    let increase = 0.03
-    var months = 0
-    func monthsOfStudy() {
-        while livingCost <= collectedMoney && monthlyIncome - totalCost >= 0 {
+    
+    
+    func monthsOfStudy(collectedMoney: Double, grant: Double, livingExpenses: Double, costIncrease: Double) {
+        var monthlyIncome = 0.0
+        var totalCost = 0.0
+        var months = 0
+        var livingExpenses = livingExpenses
+        while livingExpenses <= collectedMoney && monthlyIncome - totalCost >= 0 {
             months += 1
             if months == 1 {
-                totalCost = livingCost
-                monthlyIncome = collectedMoney + scholarship
+                totalCost = livingExpenses
+                monthlyIncome = collectedMoney + grant
             } else {
-                monthlyIncome += scholarship
-                livingCost = livingCost + (livingCost * increase)
-                totalCost += livingCost
+                monthlyIncome += grant
+                livingExpenses = livingExpenses + (livingExpenses * costIncrease)
+                totalCost += livingExpenses
             }
             if monthlyIncome <= totalCost {
                 months -= 1
