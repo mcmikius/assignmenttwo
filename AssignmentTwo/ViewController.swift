@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         stateOfAccount(basePrice: basePrice, discount: discount, startYear: startYear, finishYear: finishYear)
-        
         sumOfMoney()
         monthsOfStudy()
         inverceNumber()
@@ -27,7 +26,7 @@ class ViewController: UIViewController {
     
     //Задача 1. Остров Манхэттен был приобретен поселенцами за $24 в 1826 г. Каково было бы в настоящее время состояние их счета, если бы эти 24 доллара были помещены тогда в банк под 6% годового дохода?
     
-    func stateOfAccount(basePrice: Double, discount: Double, startYear: Int, finishYear: Int) -> (Double, Int) {
+    func stateOfAccount(basePrice: Double, discount: Double, startYear: Int, finishYear: Int) {
         var basePrice = basePrice
         var i = 0
         for _ in startYear...finishYear {
@@ -35,7 +34,7 @@ class ViewController: UIViewController {
             i += 1
         }
         print("Current account - \(Int(basePrice)) USD from \(i) years")
-        return (basePrice, i)
+        return
     }
     
     //Задача 2. Ежемесячная стипендия студента составляет 700 гривен, а расходы на проживание превышают ее и составляют 1000 грн. в месяц. Рост цен ежемесячно увеличивает расходы на 3%. Определить, какую нужно иметь сумму денег, чтобы прожить учебный год (10 месяцев), используя только эти деньги и стипендию.
