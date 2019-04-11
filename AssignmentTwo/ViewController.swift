@@ -9,20 +9,24 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let numberOne = Int(arc4random_uniform(100))
+    let numberTwo = Int(arc4random_uniform(100))
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        numberComparison()
-        squareAndCubeOfNumber()
-        orderOfNumbers()
-        numberDividers()
-        perfectNumber()
+        numberComparison(numberOne: numberOne, numberTwo: numberTwo)
+        squareOfNumber(number: numberOne)
+        cubeOfNumber(number: numberOne)
+        orderOfNumbers(number: numberOne)
+        numberDividers(number: numberOne)
+        perfectNumber(number: numberOne)
     }
+    
     //Задача 0. Вывести на экран наибольшее из двух чисел
-    let numberOne = Int(arc4random_uniform(100))
-    let numberTwo = Int(arc4random_uniform(100))
-    func numberComparison() {
+    
+    func numberComparison(numberOne: Int, numberTwo: Int) {
         if numberOne > numberTwo {
             print("Number one is greater than number two. Number one is \(numberOne)")
         } else if numberOne < numberTwo {
@@ -33,16 +37,21 @@ class ViewController: UIViewController {
     }
     
     //Задача 1. Вывести на экран квадрат и куб числа
-    let number = Int(arc4random_uniform(100))
-    func squareAndCubeOfNumber() {
-        print("base number is \(number)")
-        print("square Of Number is \(pow(Decimal(number), 2))")
-        print("cube Of Number is \(pow(Decimal(number), 3))")
+    func squareOfNumber(number: Int) -> Int {
+        let result = number * number
+        print("Square of number \(number) is \(result)")
+        return result
     }
     
+    func cubeOfNumber(number: Int) -> Int {
+        let result = number * number * number
+        print("Square of number \(number) is \(result)")
+        return result
+    }
     //Задача 2. Вывести на экран все числа до заданного и в обратном порядке до 0
-    var enterNumber = Int(arc4random_uniform(100))
-    func orderOfNumbers() {
+    
+    func orderOfNumbers(number: Int) {
+        var enterNumber = number
         for i in 0...enterNumber {
             print(i)
         }
@@ -56,9 +65,10 @@ class ViewController: UIViewController {
     }
     
     //Задача 3. Подсчитать общее количество делителей числа и вывести их
-    var divNumber = Int(arc4random_uniform(100))
-    var countDiv = 1
-    func numberDividers() {
+    
+    func numberDividers(number: Int) {
+        var countDiv = 1
+        let divNumber = number
         for i in 1...(divNumber) {
             if divNumber % i == 0 {
                 print("\(i) is a divisor of the number \(divNumber)")
@@ -76,19 +86,19 @@ class ViewController: UIViewController {
     //3-е совершенное число — 496 имеет следующие собственные делители: 1, 2, 4, 8, 16, 31, 62, 124, 248; их сумма равна 496.
     //
     //4-е совершенное число — 8128 имеет следующие собственные делители: 1, 2, 4, 8, 16, 32, 64, 127, 254, 508, 1016, 2032, 4064; их сумма равна 8128.
-    var randomNumber = Int(arc4random_uniform(100))
-    var sum = 0
-    func perfectNumber() {
-        for i in 1..<randomNumber {
-            if randomNumber % i == 0 {
+    func perfectNumber(number: Int) -> Bool {
+        var sum = 0
+        for i in 1..<number {
+            if number % i == 0 {
                 sum += i
             }
         }
-        if sum == randomNumber {
-            print("Number \(randomNumber) is perfect")
+        if sum == number {
+            print("Number \(number) is perfect")
         } else {
-            print("Number \(randomNumber) is not perfect")
+            print("Number \(number) is not perfect")
         }
+        return sum == number
     }
     
 }
