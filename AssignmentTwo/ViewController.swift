@@ -19,13 +19,15 @@ class ViewController: UIViewController {
     let grant = 700.0
     let livingExpenses = 1000.0
     let costIncrease = 0.03
+    
+    let number = Int(arc4random_uniform(1000))
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         stateOfAccount(basePrice: basePrice, discount: discount, startYear: startYear, finishYear: finishYear)
         sumOfMoney(grant: grant, livingExpenses: livingExpenses, costIncrease: costIncrease)
         monthsOfStudy(collectedMoney: collectedMoney, grant: grant, livingExpenses: livingExpenses, costIncrease: costIncrease)
-        inverceNumber()
+        inverceNumber(number: number)
     }
     
     
@@ -82,8 +84,8 @@ class ViewController: UIViewController {
     
     //Задача 4. 2хзначную цело численную переменную типа 25, 41, 12. После выполнения вашей программы у вас в другой переменной должно лежать это же число только задом на перед 52, 14, 21
     //Пример: 1024 - 4201
-    var number = Int(arc4random_uniform(1000))
-    func inverceNumber() {
+    func inverceNumber(number: Int) -> Int {
+        var number = number
         print("Base number is \(number)")
         var inversNumber = 0
         while number > 0 {
@@ -91,6 +93,7 @@ class ViewController: UIViewController {
             number = number / 10
         }
         print("Inverse number is \(inversNumber)")
+        return inversNumber
     }
 
 }
