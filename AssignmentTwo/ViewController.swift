@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         stateOfAccount(basePrice: basePrice, discount: discount, startYear: startYear, finishYear: finishYear)
         sumOfMoney(grant: grant, livingExpenses: livingExpenses, costIncrease: costIncrease)
-        monthsOfStudy()
+        monthsOfStudy(collectedMoney: collectedMoney, grant: grant, livingExpenses: livingExpenses, costIncrease: costIncrease)
         inverceNumber()
     }
     
