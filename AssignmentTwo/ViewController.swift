@@ -24,8 +24,11 @@ class ViewController: UIViewController {
         let cube = cubeOfNumber(number: numberOne)
         print("Square of number \(numberOne) is \(cube)")
         
-        orderOfNumbers(number: numberOne)
-        numberDividers(number: numberOne)
+        let riseAndDown = orderOfNumbers(number: numberOne)
+        
+        let dividers = numberDividers(number: numberOne)
+        print("the number \(dividers.divNumber) has \(dividers.countDiv) dividers")
+        
         perfectNumber(number: numberOne)
     }
     
@@ -65,11 +68,12 @@ class ViewController: UIViewController {
         if enterNumber == 0 {
             print("\(enterNumber)")
         }
+        return
     }
     
     //Задача 3. Подсчитать общее количество делителей числа и вывести их
     
-    func numberDividers(number: Int) {
+    func numberDividers(number: Int) -> (countDiv: Int, divNumber: Int) {
         var countDiv = 1
         let divNumber = number
         for i in 1...(divNumber) {
@@ -78,7 +82,8 @@ class ViewController: UIViewController {
                 countDiv += 1
             }
         }
-        print("the number \(divNumber) has \(countDiv - 1) dividers")
+        countDiv -= 1
+        return (countDiv, divNumber)
     }
     
     //Задача 4. Проверить, является ли заданное число совершенным и найти их (делители)
