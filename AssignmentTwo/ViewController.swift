@@ -29,7 +29,8 @@ class ViewController: UIViewController {
         let dividers = numberDividers(number: numberOne)
         print("the number \(dividers.divNumber) has \(dividers.countDiv) dividers")
         
-        perfectNumber(number: numberOne)
+        let perfect = perfectNumber(number: numberOne)
+        print("Is the number \(numberOne) perfect? It is \(perfect)")
     }
     
     //Задача 0. Вывести на экран наибольшее из двух чисел
