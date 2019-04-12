@@ -30,9 +30,12 @@ class ViewController: UIViewController {
         let shouldBeMoney = sumOfMoney(grant: grant, livingExpenses: livingExpenses, costIncrease: costIncrease)
         print("The student must have \(shouldBeMoney) UAH")
         
-        monthsOfStudy(collectedMoney: collectedMoney, grant: grant, livingExpenses: livingExpenses, costIncrease: costIncrease)
+        let months = monthsOfStudy(collectedMoney: collectedMoney, grant: grant, livingExpenses: livingExpenses, costIncrease: costIncrease)
+        print("Student can live \(months) months")
         
-        inverceNumber(number: number)
+        let newNumber = inverceNumber(number: number)
+        print("Base number is \(number)")
+        print("Inverse number is \(newNumber)")
     }
     
     
@@ -64,7 +67,7 @@ class ViewController: UIViewController {
     //Задача 3. У студента имеются накопления 2400 грн. Ежемесячная стипендия составляет 700 гривен, а расходы на проживание превышают ее и составляют 1000 грн. в месяц. Рост цен ежемесячно увеличивает расходы на 3%. Определить, сколько месяцев сможет прожить студент, используя только накопления и стипендию.
     
     
-    func monthsOfStudy(collectedMoney: Double, grant: Double, livingExpenses: Double, costIncrease: Double) {
+    func monthsOfStudy(collectedMoney: Double, grant: Double, livingExpenses: Double, costIncrease: Double) -> Int {
         var monthlyIncome = 0.0
         var totalCost = 0.0
         var months = 0
@@ -83,20 +86,19 @@ class ViewController: UIViewController {
                 months -= 1
             }
         }
-        print("Student can live \(months) months")
+        return months
     }
     
     //Задача 4. 2хзначную цело численную переменную типа 25, 41, 12. После выполнения вашей программы у вас в другой переменной должно лежать это же число только задом на перед 52, 14, 21
     //Пример: 1024 - 4201
+    
     func inverceNumber(number: Int) -> Int {
         var number = number
-        print("Base number is \(number)")
         var inversNumber = 0
         while number > 0 {
             inversNumber = inversNumber * 10 + number % 10
             number = number / 10
         }
-        print("Inverse number is \(inversNumber)")
         return inversNumber
     }
 
