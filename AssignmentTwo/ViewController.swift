@@ -17,14 +17,14 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         let comprasion = numberComparison(numberOne: numberOne, numberTwo: numberTwo)
-        
+        print(comprasion)
         
         let square = squareOfNumber(number: numberOne)
         print("Square of number \(numberOne) is \(square)")
         let cube = cubeOfNumber(number: numberOne)
         print("Square of number \(numberOne) is \(cube)")
         
-        let riseAndDown = orderOfNumbers(number: numberOne)
+        orderOfNumbers(number: numberOne)
         
         let dividers = numberDividers(number: numberOne)
         print("the number \(dividers.divNumber) has \(dividers.countDiv) dividers")
@@ -35,14 +35,16 @@ class ViewController: UIViewController {
     
     //Задача 0. Вывести на экран наибольшее из двух чисел
     
-    func numberComparison(numberOne: Int, numberTwo: Int) {
+    func numberComparison(numberOne: Int, numberTwo: Int) -> String{
+        var result = ""
         if numberOne > numberTwo {
-            print("Number one is greater than number two. Number one is \(numberOne)")
+            result = "Number one is greater than number two. Number one is \(numberOne)"
         } else if numberOne < numberTwo {
-            print("Number two is greater than number one Number two is \(numberTwo)")
+            result = "Number two is greater than number one Number two is \(numberTwo)"
         } else {
-            print("Numbers is equale. Numbers are \(numberTwo)")
+            result = "Numbers is equale. Numbers are \(numberTwo)"
         }
+        return result
     }
     
     //Задача 1. Вывести на экран квадрат и куб числа
@@ -57,7 +59,7 @@ class ViewController: UIViewController {
     }
     //Задача 2. Вывести на экран все числа до заданного и в обратном порядке до 0
     
-    func orderOfNumbers(number: Int) {
+    func orderOfNumbers(number: Int) -> Void {
         var enterNumber = number
         for i in 0...enterNumber {
             print(i)
