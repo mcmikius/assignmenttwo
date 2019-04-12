@@ -16,9 +16,14 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        numberComparison(numberOne: numberOne, numberTwo: numberTwo)
-        squareOfNumber(number: numberOne)
-        cubeOfNumber(number: numberOne)
+        let comprasion = numberComparison(numberOne: numberOne, numberTwo: numberTwo)
+        
+        
+        let square = squareOfNumber(number: numberOne)
+        print("Square of number \(numberOne) is \(square)")
+        let cube = cubeOfNumber(number: numberOne)
+        print("Square of number \(numberOne) is \(cube)")
+        
         orderOfNumbers(number: numberOne)
         numberDividers(number: numberOne)
         perfectNumber(number: numberOne)
@@ -39,13 +44,11 @@ class ViewController: UIViewController {
     //Задача 1. Вывести на экран квадрат и куб числа
     func squareOfNumber(number: Int) -> Int {
         let result = number * number
-        print("Square of number \(number) is \(result)")
         return result
     }
     
     func cubeOfNumber(number: Int) -> Int {
         let result = number * number * number
-        print("Square of number \(number) is \(result)")
         return result
     }
     //Задача 2. Вывести на экран все числа до заданного и в обратном порядке до 0
