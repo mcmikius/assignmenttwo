@@ -27,7 +27,8 @@ class ViewController: UIViewController {
         let currentStateOfAccount = stateOfAccount(basePrice: basePrice, discount: discount, startYear: startYear, finishYear: finishYear)
         print("Current account - \(currentStateOfAccount.currentStateOfAccount) USD from \(currentStateOfAccount.depositYears) years")
         
-        sumOfMoney(grant: grant, livingExpenses: livingExpenses, costIncrease: costIncrease)
+        let shouldBeMoney = sumOfMoney(grant: grant, livingExpenses: livingExpenses, costIncrease: costIncrease)
+        print("The student must have \(shouldBeMoney) UAH")
         
         monthsOfStudy(collectedMoney: collectedMoney, grant: grant, livingExpenses: livingExpenses, costIncrease: costIncrease)
         
@@ -44,21 +45,20 @@ class ViewController: UIViewController {
             basePrice = basePrice + basePrice * discount
             years += 1
         }
-        
         return (basePrice, years)
     }
     
     //Задача 2. Ежемесячная стипендия студента составляет 700 гривен, а расходы на проживание превышают ее и составляют 1000 грн. в месяц. Рост цен ежемесячно увеличивает расходы на 3%. Определить, какую нужно иметь сумму денег, чтобы прожить учебный год (10 месяцев), используя только эти деньги и стипендию.
     
-    func sumOfMoney(grant: Double, livingExpenses: Double, costIncrease: Double) {
+    func sumOfMoney(grant: Double, livingExpenses: Double, costIncrease: Double) -> Double {
         var livingExpenses = livingExpenses
         var sum = livingExpenses
         for _ in 2...10 {
             livingExpenses = livingExpenses + (livingExpenses * costIncrease)
             sum += livingExpenses
         }
-        print("Total costs \(sum)")
-        print("The student must have \(sum - (grant * 10)) UAH")
+        let moneys = sum - (grant * 10)
+        return moneys
     }
     
     //Задача 3. У студента имеются накопления 2400 грн. Ежемесячная стипендия составляет 700 гривен, а расходы на проживание превышают ее и составляют 1000 грн. в месяц. Рост цен ежемесячно увеличивает расходы на 3%. Определить, сколько месяцев сможет прожить студент, используя только накопления и стипендию.
